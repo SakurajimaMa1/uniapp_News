@@ -24,48 +24,14 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.tab {
-  display: flex;
-  width: 100%;
-  border-bottom: 1px #f5f5f5 solid;
-  background-color: #fff;
-  box-sizing: border-box;
-}
-.tab .tab-scroll {
+.scroll {
   flex: 1;
   overflow: hidden;
   box-sizing: border-box;
 }
-.tab .tab-scroll .tab-scroll__box {
+.scroll .list-scroll {
+  height: 100%;
   display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  height: 45px;
-  box-sizing: border-box;
-}
-.tab .tab-scroll .tab-scroll__box .tab-scroll__item {
-  flex-shrink: 0;
-  padding: 0 10px;
-  color: #333;
-  font-size: 14px;
-}
-.tab .tab-scroll .tab-scroll__box .tab-scroll__item.active {
-  color: #f07373;
-}
-.tab .tab-icons {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 45px;
-}
-.tab .tab-icons::after {
-  content: '';
-  position: absolute;
-  top: 12px;
-  bottom: 12px;
-  left: 0;
-  width: 1px;
-  background-color: #ddd;
+  flex-direction: column;
 }
 
