@@ -7,7 +7,7 @@
 			</view>
 			<view class="listcard-content">
 				<view class="listcard-content__title">
-					<text>求七五五七都唔清楚就打车去武汉汉车去武汉汉青蛙青蛙的爱的汉青蛙青蛙的爱的青蛙青蛙的爱的伤残督察vu吧v阿斯顿</text>
+					<text>求七五五七都唔清楚就打车去武汉汉汉青蛙青蛙的爱的汉青蛙青蛙的爱的青蛙青蛙的爱的伤残督察vu吧v阿斯顿</text>
 				</view>
 				<view class="listcard-content__des">
 					<view class="listcard-content__des-label">
