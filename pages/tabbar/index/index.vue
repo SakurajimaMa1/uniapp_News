@@ -2,12 +2,9 @@
 	<view class="home">
 		<navbar></navbar>
 		<tab :list="tabList" @tab='tab'></tab>
-		
-		<list-scroll>
-			<list-card mode="base">{{item}}</list-card>
-			<list-card mode="image">{{item}}</list-card>
-			<list-card mode="column">{{item}}</list-card>
-		</list-scroll>
+		<view class="home-list">
+			<list :tab="tabList"></list>
+		</view>
 	</view>
 </template>
 
@@ -49,6 +46,9 @@
 		flex-direction: column;
 		flex: 1;
 		overflow: hidden;
-		// border: 1px red solid;
+		.home-list {
+			flex: 1;
+			box-sizing: border-box;
+		}
 	}
 </style>
