@@ -4,7 +4,9 @@
 		<tab :list="tabList" @tab='tab'></tab>
 		
 		<list-scroll>
-			<list-card v-for="item in 100">{{item}}</list-card>
+			<list-card mode="base">{{item}}</list-card>
+			<list-card mode="image">{{item}}</list-card>
+			<list-card mode="column">{{item}}</list-card>
 		</list-scroll>
 	</view>
 </template>
