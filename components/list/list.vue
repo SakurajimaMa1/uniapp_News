@@ -1,5 +1,5 @@
 <template>
-	 <swiper class="home-swiper">
+	 <swiper class="home-swiper" :current="activeIndex" @change="change">
 		<swiper-item v-for="(item, index) in tab" :key="index" class="swiper-item">
 		<list-item></list-item>
 		</swiper-item>
@@ -20,12 +20,23 @@
 				default(){
 					return []
 				}
+			},
+			activeIndex: {
+				type: Number,
+				default: 0
 			}
 		},
 		data() {
 			return {
 				
 			};
+		},
+		methods: {
+			change(e) {
+				const {current} = e.detail
+				// console.log(e);
+				this.$emit('change', current)
+			}
 		}
 	}
 </script>

@@ -1,11 +1,11 @@
 <template>
 	<list-scroll class="list-scroll">
-		<list-card mode="base">{{item}}</list-card>
-		<list-card mode="image">{{item}}</list-card>
-		<list-card mode="column">{{item}}</list-card>
-		<list-card mode="base">{{item}}</list-card>
-		<list-card mode="image">{{item}}</list-card>
-		<list-card mode="column">{{item}}</list-card>
+		<list-card mode="base"></list-card>
+		<list-card mode="image"></list-card>
+		<list-card mode="column"></list-card>
+		<list-card mode="base"></list-card>
+		<list-card mode="image"></list-card>
+		<list-card mode="column"></list-card>
 	</list-scroll>
 </template>
 

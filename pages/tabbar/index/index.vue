@@ -1,9 +1,9 @@
 <template>
 	<view class="home">
 		<navbar></navbar>
-		<tab :list="tabList" @tab='tab'></tab>
+		<tab :list="tabList" :tabIndex='tabIndex' @tab='tab'></tab>
 		<view class="home-list">
-			<list :tab="tabList"></list>
+			<list :tab="tabList" :activeIndex="activeIndex" @change="change"></list>
 		</view>
 	</view>
 </template>
@@ -13,15 +13,22 @@
 		data() {
 			return {
 				title: 'Hello',
-				tabList: []
+				tabList: [],
+				tabIndex: 0,
+				activeIndex: 0
 			}
 		},
 		onLoad() {
 			this.getLabel()
 		},
 		methods: {
+			change(current) {
+				// console.log("当前swiper值为" + current);
+				this.tabIndex = current
+			},
 			tab({data, index}) {
-				console.log(data, index);
+				// console.log(data, index);
+				this.activeIndex = index
 			},
 			getLabel() {
 				// console.log(this.$api);
