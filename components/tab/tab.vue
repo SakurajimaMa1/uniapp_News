@@ -2,10 +2,12 @@
 	<view class="tab">
 		<scroll-view class="tab-scroll" scroll-x>
 			<view class="tab-scroll__box">
-				<view v-for="(item, index) in list" :key="index" class="tab-scroll__item" :class="{active: activeIndex === index}" @click="clickTab(item, index)">{{item.name}}</view>
+				<view v-for="(item,index) in list" :key="index" class="tab-scroll__item" :class="{active:activeIndex === index}" @click="clickTab(item,index)">
+					{{item.name}}
+				</view>
 			</view>
 		</scroll-view>
-		<view class="tab-icons">
+		<view class="tab-icons" @click="open">
 			<uni-icons type="gear" size="26" color="#666"></uni-icons>
 		</view>
 	</view>
@@ -13,7 +15,6 @@
 
 <script>
 	export default {
-		name:"tab",
 		props: {
 			list: {
 				type: Array,
@@ -26,6 +27,7 @@
 				default: 0
 			}
 		},
+		name:"tab",
 		watch: {
 			tabIndex(newVal) {
 				this.activeIndex = newVal
@@ -37,12 +39,16 @@
 			};
 		},
 		methods: {
-			clickTab(item, index) {
-				// console.log(item, index);
+			clickTab(item,index) {
 				this.activeIndex = index
 				this.$emit('tab', {
 					data: item,
 					index: index
+				})
+			},
+			open() {
+				uni.navigateTo({
+					url:'/pages/home-label/home-label'
 				})
 			}
 		}
@@ -53,7 +59,7 @@
 	.tab {
 		display: flex;
 		width: 100%;
-		border-bottom: 1px #f5f5f5 solid;
+		border-bottom: 1px solid #f5f5f5;
 		background-color: #fff;
 		box-sizing: border-box;
 		.tab-scroll {

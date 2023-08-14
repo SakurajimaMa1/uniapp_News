@@ -1,10 +1,11 @@
 <template>
 	<view class="home">
 		<navbar></navbar>
-		<tab :list="tabList" :tabIndex='tabIndex' @tab='tab'></tab>
+		<tab :list="tabList" :tabIndex="tabIndex" @tab="tab"></tab>
 		<view class="home-list">
 			<list :tab="tabList" :activeIndex="activeIndex" @change="change"></list>
 		</view>
+		
 	</view>
 </template>
 
@@ -19,25 +20,30 @@
 			}
 		},
 		onLoad() {
+			uni.$on('labelChange', (res)=>{
+				this.tabList = []
+				this.tabIndex = 0
+				this.activeIndex = 0
+				this.getLabel()
+			})
 			this.getLabel()
 		},
 		methods: {
-			change(current) {
-				// console.log("当前swiper值为" + current);
-				this.tabIndex = current
-			},
 			tab({data, index}) {
-				// console.log(data, index);
 				this.activeIndex = index
 			},
 			getLabel() {
-				// console.log(this.$api);
-				this.$api.get_label({
-					name: 'get_label'
-				}).then((res)=>{
-					const {data} = res
+				this.$api.get_label().then((res)=>{
+					const { data } = res
+					data.unshift({
+						name: '全部'
+					})
 					this.tabList = data
 				})
+			},
+			change(current) {
+				this.tabIndex = current
+				this.activeIndex = current
 			}
 		}
 	}

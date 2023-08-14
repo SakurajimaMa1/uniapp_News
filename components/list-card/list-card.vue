@@ -1,58 +1,60 @@
 <template>
-	<view>
-		<!-- 基础卡 -->
-		<view v-if="mode === 'base'" class="listcard">
+	<view @click="open">
+		<!-- 基础卡片 -->
+		<view v-if="item.mode === 'base' " class="listcard">
 			<view class="listcard-image">
-				<image src="../../static/logo.png" mode="aspectFill"></image>
+				<image :src="item.cover[0]" mode="aspectFill"></image>
 			</view>
 			<view class="listcard-content">
 				<view class="listcard-content__title">
-					<text>求七五五七都唔清楚就打车去武汉汉汉青蛙青蛙的爱的汉青蛙青蛙的爱的青蛙青蛙的爱的伤残督察vu吧v阿斯顿</text>
+					<text>{{item.title}}</text>
+					<likes :item="item"></likes>
 				</view>
 				<view class="listcard-content__des">
 					<view class="listcard-content__des-label">
-						<view class="listcard-content__des-label-item">前端</view>
+						<view class="listcard-content__des-label-item">{{item.classify}}</view>
 					</view>
-					<view class="listcard-content__des-browse">120</view>
+					<view class="listcard-content__des-browse">{{item.browse_count}}浏览</view>
 				</view>
 			</view>
 		</view>
 		
 		<!-- 多图模式 -->
-		<view v-if="mode === 'column'" class="listcard mode-column">
+		<view v-if="item.mode === 'column'" class="listcard mode-column">
 			<view class="listcard-content">
 				<view class="listcard-content__title">
-					<text>求七五五七都唔清楚就打车去武汉汉汉青蛙青蛙的爱的汉青蛙青蛙的爱的青蛙青蛙的爱的伤残督察vu吧v阿斯顿</text>
+					<text>{{item.title}}</text>
+					<likes :item="item"></likes>
 				</view>
 				<view class="listcard-image">
-					<view v-for="item in 3" :key="item" class="listcard-image__item">
-						<image src="../../static/logo.png" mode="aspectFill"></image>
+					<view v-if="index < 3" v-for="(item, index) in item.cover" :key="index" class="listcard-image__item">
+						<image :src="item" mode="aspectFill"></image>
 					</view>
 				</view>
 				<view class="listcard-content__des">
 					<view class="listcard-content__des-label">
-						<view class="listcard-content__des-label-item">前端</view>
+						<view class="listcard-content__des-label-item">{{item.classify}}</view>
 					</view>
-					<view class="listcard-content__des-browse">120</view>
+					<view class="listcard-content__des-browse">{{item.browse_count}}浏览</view>
 				</view>
 			</view>
 		</view>
 		
 		<!-- 大图模式 -->
-		<view v-if="mode === 'image'" class="listcard mode-image">
+		<view v-if="item.mode === 'image'" class="listcard mode-image">
 			<view class="listcard-image">
-				<image src="/static/logo.png" mode="aspectFill"></image>
+				<image :src="item.cover[0]" mode="aspectFill"></image>
 			</view>
 			<view class="listcard-content">
 				<view class="listcard-content__title">
-					<text>求七五五七都唔清楚就打车去武汉汉汉青蛙青蛙的爱的汉青蛙青蛙的爱的青蛙青蛙的爱的伤残督察vu吧v阿斯顿</text>
+					<text>{{item.title}}</text>
+					<likes :item="item"></likes>
 				</view>
-				
 				<view class="listcard-content__des">
 					<view class="listcard-content__des-label">
-						<view class="listcard-content__des-label-item">前端</view>
+						<view class="listcard-content__des-label-item">{{item.classify}}</view>
 					</view>
-					<view class="listcard-content__des-browse">120</view>
+					<view class="listcard-content__des-browse">{{item.browse_count}}浏览</view>
 				</view>
 			</view>
 		</view>
@@ -65,13 +67,24 @@
 		props: {
 			mode: {
 				type: String,
-				default: "base"
+				default: 'base'
+			},
+			item: {
+				type: Object,
+				default() {
+					return {}
+				}
 			}
 		},
 		data() {
 			return {
 				
 			};
+		},
+		methods: {
+			open() {
+				this.$emit('click', this.item)
+			}
 		}
 	}
 </script>
@@ -81,7 +94,7 @@
 		display: flex;
 		padding: 10px;
 		margin: 10px;
-		border: 5px;
+		border-radius: 5px;
 		box-shadow: 0 0 5px 1px rgba($color: #000000, $alpha: 0.1);
 		box-sizing: border-box;
 		.listcard-image {
@@ -91,8 +104,8 @@
 			border-radius: 5px;
 			overflow: hidden;
 			image {
-				height: 100%;
 				width: 100%;
+				height: 100%;
 			}
 		}
 		.listcard-content {
@@ -102,6 +115,8 @@
 			padding-left: 10px;
 			width: 100%;
 			.listcard-content__title {
+				position: relative;
+				padding-right: 30px;
 				font-size: 14px;
 				color: #333;
 				font-weight: 400;
@@ -110,9 +125,10 @@
 					overflow: hidden;
 					text-overflow: ellipsis;
 					display: -webkit-box;
-					-webkit-line-clamp:2;
-					-webkit-box-orient:vertical;
+					-webkit-line-clamp: 2;
+					-webkit-box-orient: vertical;
 				}
+				
 			}
 			.listcard-content__des {
 				display: flex;
@@ -134,7 +150,6 @@
 				}
 			}
 		}
-		
 		&.mode-column {
 			.listcard-content {
 				width: 100%;
@@ -158,13 +173,11 @@
 						height: 100%;
 					}
 				}
-				
 			}
 			.listcard-content__des {
 				margin-top: 10px;
 			}
 		}
-		
 		&.mode-image {
 			flex-direction: column;
 			.listcard-image {
@@ -182,5 +195,4 @@
 			}
 		}
 	}
-
 </style>

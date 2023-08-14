@@ -34,4 +34,8 @@ page {
   flex: 1;
   overflow: hidden;
 }
+.home .home-list {
+  flex: 1;
+  box-sizing: border-box;
+}
 

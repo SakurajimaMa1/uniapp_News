@@ -5,7 +5,7 @@
     "include": []
   },
   "setting": {
-    "urlCheck": false,
+    "urlCheck": true,
     "es6": false,
     "postcss": false,
     "minified": false,
@@ -18,9 +18,9 @@
     }
   },
   "compileType": "miniprogram",
-  "libVersion": "2.27.1",
-  "appid": "touristappid",
-  "projectname": "uniapp_News",
+  "libVersion": "3.0.0",
+  "appid": "wx23563f9416a2a328",
+  "projectname": "news",
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",

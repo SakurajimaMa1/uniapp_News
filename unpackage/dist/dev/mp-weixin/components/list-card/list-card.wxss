@@ -28,7 +28,7 @@
   display: flex;
   padding: 10px;
   margin: 10px;
-  border: 5px;
+  border-radius: 5px;
   box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
 }
@@ -40,8 +40,8 @@
   overflow: hidden;
 }
 .listcard .listcard-image image {
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
 .listcard .listcard-content {
   display: flex;
@@ -51,6 +51,8 @@
   width: 100%;
 }
 .listcard .listcard-content .listcard-content__title {
+  position: relative;
+  padding-right: 30px;
   font-size: 14px;
   color: #333;
   font-weight: 400;
@@ -81,5 +83,47 @@
 .listcard .listcard-content .listcard-content__des .listcard-content__des-browse {
   color: #999;
   line-height: 1.5;
+}
+.listcard.mode-column .listcard-content {
+  width: 100%;
+  padding-left: 0;
+}
+.listcard.mode-column .listcard-image {
+  display: flex;
+  margin-top: 10px;
+  width: 100%;
+  height: 70px;
+}
+.listcard.mode-column .listcard-image .listcard-image__item {
+  margin-left: 10px;
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.listcard.mode-column .listcard-image .listcard-image__item:first-child {
+  margin-left: 0;
+}
+.listcard.mode-column .listcard-image .listcard-image__item image {
+  width: 100%;
+  height: 100%;
+}
+.listcard.mode-column .listcard-content__des {
+  margin-top: 10px;
+}
+.listcard.mode-image {
+  flex-direction: column;
+}
+.listcard.mode-image .listcard-image {
+  width: 100%;
+  height: 100px;
+}
+.listcard.mode-image .listcard-content {
+  padding-left: 0;
+  margin-top: 10px;
+}
+.listcard.mode-image .listcard-content .listcard-content__des {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
 }
 

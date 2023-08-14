@@ -1,13 +1,15 @@
 import App from './App'
 import api from './common/api'
-
+import store from './store'
 // #ifndef VUE3
 import Vue from 'vue'
+import './uni.promisify.adaptor'
 Vue.config.productionTip = false
 Vue.prototype.$api = api
 App.mpType = 'app'
 const app = new Vue({
-    ...App
+  store,
+  ...App
 })
 app.$mount()
 // #endif
