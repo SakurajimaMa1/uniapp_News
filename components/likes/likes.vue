@@ -13,6 +13,10 @@
 				default() {
 					return {}
 				}
+			},
+			types: {
+				type: String,
+				default:''
 			}
 		},
 		data() {
@@ -44,7 +48,7 @@
 						title: this.like?'收藏成功':'取消收藏',
 						icon: 'none'
 					})
-					console.log(res);
+					uni.$emit('update_article', this.types)
 				}).catch(()=>{
 					uni.hideLoading()
 				})

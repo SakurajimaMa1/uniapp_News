@@ -2,7 +2,9 @@
 	<view class="navbar">
 		<view class="navbar-fixed">
 			<!-- 状态栏 -->
+			<!-- #ifndef MP-ALIPAY -->
 			<view :style="{height: statusBarHeight + 'px'}"></view>
+			<!-- #endif -->
 			<!-- 导航栏 -->
 			<view class="navbar-content" :class="{search: isSearch}" :style="{height: navBarHeight + 'px', width:windowWidth+'px'}" @click.stop="open">
 				<view v-if="isSearch" class="navbar-content__search-icons" @click="back">
@@ -60,6 +62,9 @@
 			const menuButtonInfo = uni.getMenuButtonBoundingClientRect()
 			this.navBarHeight = (menuButtonInfo.bottom - info.statusBarHeight) + (menuButtonInfo.top - info.statusBarHeight)
 			this.windowWidth = menuButtonInfo.left
+			// #endif
+			// #ifdef MP-ALIPAY
+			this.statusBarHeight = 0
 			// #endif
 		},
 		methods: {

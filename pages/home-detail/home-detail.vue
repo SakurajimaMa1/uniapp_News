@@ -168,6 +168,7 @@
 				}).then((res)=>{
 					uni.hideLoading()
 					this.formData.is_author_like = !this.formData.is_author_like
+					uni.$emit('update_author')
 					uni.showToast({
 						title: this.formData.is_author_like ? '关注成功' : '取消关注',
 						icon: 'none'
@@ -182,7 +183,7 @@
 				}).then((res)=>{
 					uni.hideLoading()
 					this.formData.is_like = !this.formData.is_like
-					uni.$emit('update_article')
+					uni.$emit('update_article', 'follow')
 					uni.showToast({
 						title: this.formData.is_like ? '收藏成功':'取消收藏',
 						icon: 'none'
@@ -261,8 +262,11 @@
 			}
 		}
 		.detail-header__button {
+			padding: 0 15px;
 			flex-shrink: 0;
 			height: 30px;
+			line-height: 30px;
+			border-radius: 5px;
 			font-size: 12px;
 			color: #fff;
 			background-color: $mk-base-color;
